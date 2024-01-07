@@ -51,10 +51,12 @@ while continue_game:
     # Snake collides with the wall
     if snake.head.xcor() < -280 or snake.head.xcor() > 280 or snake.head.ycor() < -280 or snake.head.ycor() > 300:
         score_board.reset_score()
+        snake.reset_snake()
 
     # Snake collides with its own tail
     for block in snake.blocks[1:]:
         if snake.head.distance(block) < 10:
             score_board.reset_score()
+            snake.reset_snake()
 
 screen.exitonclick()

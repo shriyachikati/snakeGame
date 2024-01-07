@@ -15,7 +15,6 @@ class Snake:
         self.create_snake()
         self.head = self.blocks[0]
 
-
     def new_segment(self, position):
         new_block = Turtle("square")
         new_block.penup()
@@ -29,6 +28,7 @@ class Snake:
 
     def grow(self):
         self.new_segment(self.blocks[-1].position())
+
     def move(self):
         for i in range(len(self.blocks) - 1, 0, -1):
             x = self.blocks[i - 1].xcor()
@@ -51,3 +51,10 @@ class Snake:
     def right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(0)
+
+    def reset_snake(self):
+        for block in self.blocks:
+            block.goto(1000, 1000)
+        self.blocks.clear()
+        self.create_snake()
+        self.head = self.blocks[0]
